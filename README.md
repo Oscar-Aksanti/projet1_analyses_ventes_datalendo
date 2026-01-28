@@ -48,11 +48,10 @@ Le projet est organisé de manière **professionnelle et reproductible** :
 
    ```sql
    CREATE DATABASE datalendo_db;
-
-  ```sql
-COPY clients FROM '/path/clients.csv' DELIMITER ',' CSV HEADER;
-COPY ventes FROM '/path/ventes.csv' DELIMITER ',' CSV HEADER;
-COPY produits FROM '/path/produits.csv' DELIMITER ',' CSV HEADER;
-COPY paiements FROM '/path/paiements.csv' DELIMITER ',' CSV HEADER;
+   
+   COPY clients FROM '/clients.csv' DELIMITER ',' CSV HEADER;
+   COPY ventes FROM '/ventes.csv' DELIMITER ',' CSV HEADER;
+   COPY produits FROM '/produits.csv' DELIMITER ',' CSV HEADER;
+   COPY paiements FROM '/paiements.csv' DELIMITER ',' CSV HEADER;
 
 
