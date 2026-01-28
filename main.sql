@@ -76,3 +76,55 @@ FROM ventes;
 SELECT MIN(montant_total) AS vente_min
 FROM ventes;
 
+
+-- PARTIE 2 : Nettoyage et préparation des données
+
+-- Etape 1 : Filtrer les paiements réussis
+-- Garder uniquement les ventes avec un paiement réussi
+SELECT v.*
+FROM ventes v
+JOIN paiements p ON v.id_vente = p.id_vente
+WHERE p.statut = 'Success';
+
+-- Étape 2 – Vérifier les doublons
+-- Vérifier les doublons dans les ventes
+SELECT id_vente, COUNT(*) AS nb_occurrences
+FROM ventes
+GROUP BY id_vente
+HAVING COUNT(*) > 1;
+
+
+-- Etape 3 : Vérifier les valeurs nulles ou manquantes
+-- Vérifier les clients sans pays
+SELECT *
+FROM clients
+WHERE pays IS NULL;
+
+-- Vérifier les ventes sans montant
+SELECT *
+FROM ventes
+WHERE montant_total IS NULL;
+
+
+-- Etape 4 – Conversion des dates
+-- Vérifier les dates de vente
+SELECT date_vente
+FROM ventes
+LIMIT 5;
+
+-- Vérifier les dates d'inscription des clients
+SELECT date_inscription
+FROM clients
+LIMIT 5;
+
+
+-- Etape 5 – Préparer les colonnes importantes pour l’analyse
+-- Total ventes par pays
+SELECT c.pays, COUNT(v.id_vente) AS nb_ventes
+FROM ventes v
+JOIN clients c ON v.id_client = c.id_client
+GROUP BY c.pays
+ORDER BY nb_ventes DESC;
+
+
+
