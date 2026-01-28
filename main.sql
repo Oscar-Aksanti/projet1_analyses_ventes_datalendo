@@ -1,5 +1,3 @@
-CREATE DATABASE datalendo_db;
-
 
 -- PARTIE 1 : EXPLOIRATION DES DONNÉES
 
